@@ -1,0 +1,11 @@
+﻿
+TABLE workers
+workerId INTEGER NOT NULL PRIMARY KEY
+bossId INTEGER REFERENCES workers(workerId)
+name VARCHAR(30) NOT NULL
+birthdate DATE
+
+
+SELECT * FROM WORKERS 
+WHERE bossId in (SELECT workedId FROM workers)
+AND DATEDIFF(year, birthdate, getdate()) > 35
